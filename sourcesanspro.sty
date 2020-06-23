@@ -7,6 +7,10 @@
 %
 % Licenced under the LPPL v1.3 or higher.
 %
+
+% Jaewon Chung, 2020. 
+% Removed unused font styles, and set the Path of newfontfamilies to fonts/.
+
 \NeedsTeXFormat{LaTeX2e}[1994/12/01]
 \ProvidesPackage{sourcesanspro}[2018/05/19 v2.7 Adobe's Source Sans Pro typeface]
 
@@ -116,7 +120,7 @@
 	\ifsourcesanspro@sfdefault
 		\setsansfont
 			[ Path           = fonts/ ,
-        UprightFont    = *-\sourcesanspro@regstyle ,
+ 			  UprightFont    = *-\sourcesanspro@regstyle ,
 			  ItalicFont     = *-\sourcesanspro@regstyle It ,
 			  BoldFont       = *-\sourcesanspro@boldstyle ,
 			  BoldItalicFont = *-\sourcesanspro@boldstyle It]
@@ -127,7 +131,7 @@
 	% Regular/Bold
 	\newfontfamily\sourcesanspro
 		[ Path           = fonts/ ,
-      UprightFont    = *-Regular ,
+ 		  UprightFont    = *-Regular ,
 		  ItalicFont     = *-RegularIt ,
 		  BoldFont       = *-Bold ,
 		  BoldItalicFont = *-BoldIt ]
