@@ -50,3 +50,9 @@ jobs:
         asset_path: ./resume.pdf
         asset_name: resume.pdf
         asset_content_type: application/pdf
+    - name: Repository Dispatch
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        token: ${{ secrets.PAT }}
+        repository: jaywonchung/jaywonchung.github.io
+        event-type: resume-release
