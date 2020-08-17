@@ -31,7 +31,7 @@ jobs:
     - name: Set environment variable NOW
       run: echo "::set-env name=NOW::v$(date +'%Y%m%d.%H%M%S')"
     - name: Create release
-      id: create-release
+      id: create_release
       uses: actions/create-release@v1.1.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
