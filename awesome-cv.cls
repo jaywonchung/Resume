@@ -638,8 +638,8 @@
   \item \honorpositionstyle{#1}, \honortitlestyle{#2}, \honortitlestyle{#3} \\
 }
 
-% Define an environment for cvlisting
-\newenvironment{cvlisting}{
+% Define an environment for cvlist
+\newenvironment{cvlist}{
   \vspace{\acvSectionTopSkip}
 	\vspace{-2mm}
 	\begin{justify}
@@ -652,9 +652,9 @@
 }
 
 % Define a line of cv information(honor, award, or something else)
-% Usage: \cvlistingitem{<content>}
-\newcommand*{\cvlistingitem}[1]{%
-  \item \honorpositionstyle{#1} \\
+% Usage: \cvlistitem{<content>}
+\newcommand*{\cvlistitem}[2]{%
+  \item \honorpositionstyle{#1}, \honortitlestyle{#2} \\
 }
 
 % Define an environment for cvskill
