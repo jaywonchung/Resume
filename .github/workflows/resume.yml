@@ -27,7 +27,7 @@ jobs:
       run: |
         sed -i -e "s/PHONE_NUMBER/$PN/" -e "s/EMAIL_ADDRESS/$EA/" resume.tex cv.tex
     - name: Compile the Resume
-      run: make resume
+      run: latexmk -xelatex resume.tex
     - name: Set environment variable NOW
       run: echo "::set-env name=NOW::v$(date +'%Y%m%d.%H%M%S')"
     - name: Create release
