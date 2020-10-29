@@ -1,3 +1,5 @@
+.PHONY: resume
+
 resume:
 	latexmk -xelatex resume.pdf
 
