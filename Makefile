@@ -7,4 +7,4 @@ resume:
 	mv _resume.pdf resume.pdf
 
 clean:
-	rm *.aux *.fdb_latexmk *.fls *.log *.out *.pdf
+	rm *.aux *.fdb_latexmk *.fls *.log *.out *.pdf *.xdv

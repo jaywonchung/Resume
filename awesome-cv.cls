@@ -161,7 +161,7 @@
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
 % Set the FontAwesome font to be up-to-date.
-\newfontfamily\FA[Path=fonts/]{FontAwesome.ttf}
+% \newfontfamily\FA[Path=fonts/]{FontAwesome.ttf}
 % Set font for header (default is Roboto)
 \newfontfamily\headerfont[
   Path=fonts/,
@@ -377,8 +377,8 @@
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
-\newcommand{\acvSectionTopSkip}{0mm}
-\newcommand{\acvSectionContentTopSkip}{1mm}
+\newcommand{\acvSectionTopSkip}{3mm}
+\newcommand{\acvSectionContentTopSkip}{2.5mm}
 
 
 %-------------------------------------------------------------------------------
