@@ -1,6 +1,6 @@
-# Jaewon's Resume and CV
+# Jae-Won's Resume
 
-This repository contains the LaTeX sources for my Resume and CV.
+This repository contains the LaTeX sources for my Resume.
 
 I used to compile the sources on Overleaf, from which I have obtained the CV template. Now, I have setup a Github Action on the repo, which automatically compiles and releases my documents.
 
