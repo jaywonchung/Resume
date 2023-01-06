@@ -89,6 +89,16 @@
   pdfkeywords={}
 }
 
+% Pretty underlines
+\RequirePackage{contour}
+\RequirePackage[normalem]{ulem}
+\renewcommand{\ULdepth}{1.8pt}
+\contourlength{0.8pt}
+\newcommand{\myuline}[1]{%
+  \uline{\phantom{#1}}%
+  \llap{\contour{white}{#1}}%
+}
+
 
 %-------------------------------------------------------------------------------
 %                Configuration for directory locations
@@ -579,6 +589,20 @@
   \end{tabular*}%
 }
 
+% Separate command for entries in experiences (org names are long)
+\newcommand*{\cventryexp}[5]{%
+  \vspace{-2.0mm}
+  \setlength\tabcolsep{0pt}
+  \setlength{\extrarowheight}{0pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 6cm} R{6cm}}
+    \ifempty{#2#3}
+      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+  \end{tabular*}%
+}
+
 % Define an environment for cvsubentry
 \newenvironment{cvsubentries}{%
   \begin{center}
@@ -641,7 +665,7 @@
 
 % Define an environment for cvlist
 \newenvironment{cvlist}{
-  \vspace{\acvSectionTopSkip}
+  \vspace{\acvSectionContentTopSkip}
 	\vspace{-2mm}
 	\begin{justify}
 	\begin{itemize}[leftmargin=2ex, nosep, noitemsep]

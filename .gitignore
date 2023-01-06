@@ -285,3 +285,6 @@ TSWLatexianTemp*
 
 # direnv
 .envrc
+
+# MacOS
+.DS_Store
