@@ -28,18 +28,23 @@ jobs:
         sed -i -e "s/PHONE_NUMBER/$PN/" -e "s/EMAIL_ADDRESS/$EA/" resume.tex cv.tex
     - name: Compile the Resume
       run: latexmk -xelatex resume.tex
+    - name: Create directory for artifact
+      run: |
+        mv resume _resume
+        mkdir resume
+        mv resume.pdf resume/Jae-Won_Chung.pdf
     - name: Push the build Resume to jaywonchung/jaywonchung.github.io
       uses: cpina/github-action-push-to-another-repository@v1.5
       env:
         SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
       with:
-        source-directory: resume.pdf
+        source-directory: resume
         destination-github-username: jaywonchung
         destination-repository-name: jaywonchung.github.io
         user-name: Jae-Won Chung
         user-email: jwnchung@umich.edu
         target-branch: master
-        target-directory: assets/attachments/Jae-Won_Chung_resume.pdf
+        target-directory: assets/attachments
     # - name: Set environment variable NOW
     #   run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
     # - name: Create release
