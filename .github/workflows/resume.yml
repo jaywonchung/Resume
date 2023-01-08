@@ -28,32 +28,44 @@ jobs:
         sed -i -e "s/PHONE_NUMBER/$PN/" -e "s/EMAIL_ADDRESS/$EA/" resume.tex cv.tex
     - name: Compile the Resume
       run: latexmk -xelatex resume.tex
-    - name: Set environment variable NOW
-      run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
-    - name: Create release
-      id: create_release
-      uses: actions/create-release@v1.1.1
+    - name: Push the build Resume to jaywonchung/jaywonchung.github.io
+      uses: cpina/github-action-push-to-another-repository@v1.5
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
       with:
-        tag_name: ${{ env.NOW }}
-        release_name: Release ${{ env.NOW }}
-        draft: false
-        prerelease: false
-    - name: Upload Resume to release
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1.0.2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./resume.pdf
-        asset_name: resume.pdf
-        asset_content_type: application/pdf
-    - name: Repository Dispatch
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.PAT }}
-        repository: jaywonchung/jaywonchung.github.io
-        event-type: resume-release
-        client-payload: '{"version": "${{ env.NOW }}"}'
+        source-directory: resume.pdf
+        destination-github-username: jaywonchung
+        destination-repository-name: jaywonchung.github.io
+        user-name: Jae-Won Chung
+        user-email: jwnchung@umich.edu
+        target-branch: master
+        target-directory: assets/attachments/Jae-Won_Chung_resume.pdf
+    # - name: Set environment variable NOW
+    #   run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
+    # - name: Create release
+    #   id: create_release
+    #   uses: actions/create-release@v1.1.1
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     tag_name: ${{ env.NOW }}
+    #     release_name: Release ${{ env.NOW }}
+    #     draft: false
+    #     prerelease: false
+    # - name: Upload Resume to release
+    #   id: upload-release-asset 
+    #   uses: actions/upload-release-asset@v1.0.2
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #   with:
+    #     upload_url: ${{ steps.create_release.outputs.upload_url }}
+    #     asset_path: ./resume.pdf
+    #     asset_name: resume.pdf
+    #     asset_content_type: application/pdf
+    # - name: Repository Dispatch
+    #   uses: peter-evans/repository-dispatch@v1
+    #   with:
+    #     token: ${{ secrets.PAT }}
+    #     repository: jaywonchung/jaywonchung.github.io
+    #     event-type: resume-release
+    #     client-payload: '{"version": "${{ env.NOW }}"}'
