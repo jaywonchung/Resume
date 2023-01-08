@@ -44,7 +44,7 @@ jobs:
         user-name: Jae-Won Chung
         user-email: jwnchung@umich.edu
         target-branch: master
-        target-directory: assets/attachments
+        target-directory: assets/attachments/resume
     # - name: Set environment variable NOW
     #   run: echo "NOW=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
     # - name: Create release
