@@ -645,6 +645,24 @@
   \honordatestyle{#4} & \honorpositionstyle{#1}, \honortitlestyle{#2} & \honorlocationstyle{#3} \\
 }
 
+% Define an environment for cvtalks
+\newenvironment{cvtalks}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{-2mm}
+  \begin{center}
+    \setlength\tabcolsep{0pt}
+    \setlength{\extrarowheight}{0pt}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} C{1.5cm} L{\textwidth - 6.5cm} R{5cm}}
+}{%
+    \end{tabular*}
+  \end{center}
+}
+% Define a line of cv information
+% Usage: \cvtalk{<title>}{<venue>}{<date>}
+\newcommand*{\cvtalk}[3]{%
+  \honordatestyle{#3} & \honorpositionstyle{#1} & \honorlocationstyle{#2} \\
+}
+
 % Define an environment for cvpub
 \newenvironment{cvpubs}{
   \vspace{\acvSectionTopSkip}
