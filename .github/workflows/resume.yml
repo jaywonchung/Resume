@@ -22,7 +22,6 @@ jobs:
       run: latexmk -xelatex resume.tex
     - name: Create directory for artifact
       run: |
-        mv resume _resume
         mkdir resume
         mv resume.pdf resume/Jae-Won_Chung.pdf
     - name: Push the built Resume to jaywonchung/jaywonchung.github.io
