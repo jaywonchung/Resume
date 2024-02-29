@@ -1,38 +1,38 @@
-name: Compile and Push Resume to Homepage
+name: Compile and Push CV to Homepage
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
-    name: Build Resume
+    name: Build CV
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Git repository
       uses: actions/checkout@v2.3.1
-    - name: Install tools for building the Resume
+    - name: Install tools for building the CV
       run: sudo apt-get update && sudo apt-get install latexmk texlive-xetex
     - name: Replace secrets in sources
       env:
         PN: ${{ secrets.PHONE_NUMBER }}
         EA: ${{ secrets.EMAIL_ADDRESS }}
       run: |
-        sed -i -e "s/PHONE_NUMBER/$PN/" -e "s/EMAIL_ADDRESS/$EA/" resume.tex
-    - name: Compile the Resume
-      run: latexmk -xelatex resume.tex
+        sed -i -e "s/PHONE_NUMBER/$PN/" -e "s/EMAIL_ADDRESS/$EA/" cv.tex
+    - name: Compile the CV
+      run: latexmk -xelatex cv.tex
     - name: Create directory for artifact
       run: |
-        mkdir resume
-        mv resume.pdf resume/Jae-Won_Chung.pdf
-    - name: Push the built Resume to jaywonchung/jaywonchung.github.io
+        mkdir cv
+        mv cv.pdf cv/Jae-Won_Chung.pdf
+    - name: Push the built CV to jaywonchung/jaywonchung.github.io
       uses: cpina/github-action-push-to-another-repository@v1.5
       env:
         SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
       with:
-        source-directory: resume
+        source-directory: cv
         destination-github-username: jaywonchung
         destination-repository-name: jaywonchung.github.io
         user-name: Jae-Won Chung
         user-email: jwnchung@umich.edu
         target-branch: master
-        target-directory: assets/attachments/resume
+        target-directory: assets/attachments/cv
