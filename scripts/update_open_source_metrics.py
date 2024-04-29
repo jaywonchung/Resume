@@ -19,7 +19,7 @@ REPOS = [
 ]
 
 METRICS_TEMPLATE = """    {\\normalfont(\\faStarOstars \\faCodeFork~forks)}} % Content\n"""
-LAST_UPDATED_TEMPLATE = "\\textit{{Number of stars and forks are as of {date}.}}\n"
+LAST_UPDATED_TEMPLATE = "\\textit{{Number of stars and forks are up-to-date as of {date}.}}\n"
 
 
 def today() -> str:
@@ -56,7 +56,7 @@ def main():
         if "faCodeFork" in line:
             stars, forks = stars_and_forks.pop(0)
             lines[i] = METRICS_TEMPLATE.replace("stars", str(stars)).replace("forks", str(forks))
-        elif "Number of stars and forks are as of" in line:
+        elif "Number of stars and forks are up-to-date as of" in line:
             lines[i] = LAST_UPDATED_TEMPLATE.format(date=today())
 
     with open("sections/opensource.tex", "w") as f:
