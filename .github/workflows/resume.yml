@@ -17,7 +17,7 @@ jobs:
         PN: ${{ secrets.PHONE_NUMBER }}
         EA: ${{ secrets.EMAIL_ADDRESS }}
       run: |
-        sed -i -e "s/PHONE_NUMBER/$PN/" -e "s/EMAIL_ADDRESS/$EA/" cv.tex
+        sed -i -e "s/PHONENUMBER/$PN/" -e "s/EMAILADDRESS/$EA/" cv.tex
     - name: Compile the CV
       run: latexmk -xelatex cv.tex
     - name: Create directory for artifact
